@@ -5,42 +5,23 @@ import XCTest
 class ObserveTests: XCTestCase {
     
     override func setUp() {
-        TestDependencies.failureHandler = XCTFail
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        XCTAssertEqual(Observe().text, "Hello, World!")
-
-    }
-    
-    func testSomething() {
-        given("I have something") {
-            
-            when("I do something") {
-                
-                then("Something should happen") {
-                    
-                    expectTrue(true)
-                    
+    /// Test that each describe method get's called in the order that it was written.
+    func testDescribesGetCalledInOrder() {
+        var tests = [Int]()
+        describe("test1") {
+            tests.append(1)
+            describe("") {
+                tests.append(2)
+                describe("") {
+                    tests.append(3)
                 }
             }
-        }
-    }
-    
-    func testSomethingElse() {
-        given("I have something else") {
-            
-            when("I do something else") {
-                
-                then("Something else should happen") {
-                    
-                    expectTrue(false)
-                    
-                }
+            describe("") {
+                tests.append(4)
             }
         }
+        XCTAssertEqual(tests, [1,2,3,4])
     }
-
 }
