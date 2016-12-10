@@ -25,11 +25,6 @@ protocol ObserveTestable {
     var parent: ObserveTestable? { get }
     
     /**
-     Create a new instance of the Observe Testable.
-    */
-//    init(closure: ((Void) -> (Void))?, beforeEachChild: ((Void) -> (Void))?)
-    
-    /**
      Add a child test to this test's children array.
      This will also add the current test as the child's parent.
      
