@@ -39,6 +39,3 @@ class WhenRunningBeforeAndAfterChildrenBlockFromATestObject: XCTestCase {
         XCTAssertTrue(run)
     }
 }
-func test_popNextChild() {
-    
-}
