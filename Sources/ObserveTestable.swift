@@ -31,6 +31,7 @@ protocol ObserveTestable {
     
     /**
      Add a child test to this test's children array.
+     This will also add the current test as the child's parent.
      
      - parameter test: The child test.
      */
