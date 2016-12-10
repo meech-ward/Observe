@@ -33,12 +33,6 @@ class ObserveTest: ObserveTestable {
     }
     private var _parent: ObserveTestable?
     
-//    init(closure: ((Void) -> (Void))?, beforeEachChild: ((Void) -> (Void))?) {
-//        self.closure = closure
-//        self.beforeEachChild = beforeEachChild
-//    }
-    
-    
     func addChild(test: ObserveTestable) {
         if _children == nil {
             _children = []
