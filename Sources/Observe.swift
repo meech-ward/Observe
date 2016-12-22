@@ -50,7 +50,9 @@ struct Observe {
     }
 }
 
-func describe(_ message: String, file: StaticString = #file, line: UInt = #line, handler: @escaping ((Void) -> (Void))) {
+/**
+ */
+public func describe(_ message: String, file: StaticString = #file, line: UInt = #line, handler: @escaping ((Void) -> (Void))) {
     let test = ObserveTest()
     test.closure = handler
     test.description = message
@@ -64,11 +66,19 @@ func describe(_ message: String, file: StaticString = #file, line: UInt = #line,
     Observe.runTests()
 }
 
+public func context(_ message: String, file: StaticString = #file, line: UInt = #line, handler: @escaping ((Void) -> (Void))) {
+    describe(message, file: file, line: line, handler: handler)
+}
+
+public func it(_ message: String, file: StaticString = #file, line: UInt = #line, handler: @escaping ((Void) -> (Void))) {
+    describe(message, file: file, line: line, handler: handler)
+}
+
 
 /**
  Called before each of the blocks within the same scope.
  */
-func beforeEach(file: StaticString = #file, line: UInt = #line, handler: @escaping ((Void) -> (Void))) {
+public func beforeEach(file: StaticString = #file, line: UInt = #line, handler: @escaping ((Void) -> (Void))) {
     guard var currentTest = Observe.currentTest else {
         print("🖕🏼Error: beforeEach must go inside a function")
         return
