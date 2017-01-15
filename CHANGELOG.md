@@ -10,6 +10,25 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Changed
 
 
+## [0.2.0] - 2017-01-14
+### Added
+- The following sections to README:
+	* Requirements
+	* How To Use
+	* Matchers
+	* Features
+	* Contributing
+- An `ISSUE_TEMPLATE.md` file to have a template for for bugs, enhancements or optimizations, and new features.
+- An MIT `LICENSE` document.
+- A Contributing file with the following sections:
+	* What should I know before I get started?
+	* How Can I Contribute?
+	* Styleguides
+	* Code of Conduct
+
+### Changed
+
+
 ## [0.1.0] - 2016-12-21
 ### Added
 - An `ObserveTestable` protocol that defines methods and properties that help execute test closures, and an `ObserveTest` object that confroms to that protocol.
