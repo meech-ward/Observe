@@ -74,6 +74,18 @@ public func it(_ message: String, file: StaticString = #file, line: UInt = #line
     describe(message, file: file, line: line, handler: handler)
 }
 
+public func given(_ message: String, file: StaticString = #file, line: UInt = #line, handler: @escaping ((Void) -> (Void))) {
+    describe(message, file: file, line: line, handler: handler)
+}
+
+public func when(_ message: String, file: StaticString = #file, line: UInt = #line, handler: @escaping ((Void) -> (Void))) {
+    describe(message, file: file, line: line, handler: handler)
+}
+
+public func then(_ message: String, file: StaticString = #file, line: UInt = #line, handler: @escaping ((Void) -> (Void))) {
+    describe(message, file: file, line: line, handler: handler)
+}
+
 
 /**
  Called before each of the blocks within the same scope.
