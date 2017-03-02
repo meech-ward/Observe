@@ -12,6 +12,13 @@ class ObserveTest: ObserveTestable {
     var closure: ((Void) -> (Void))?
     var beforeEachChild: ((Void) -> (Void))?
     var description: String?
+    var reporterDelegate: ReporterDelegate?
+    var file: StaticString?
+    var method: String?
+    var line: UInt?
+    var message: String?
+    var blockType: BlockType?
+    var indentationLevel: Int?
     
     var children: [ObserveTestable]? {
         return _children
@@ -55,6 +62,7 @@ class ObserveTest: ObserveTestable {
     
     func runTest() {
         _running = true
+        reporterDelegate?.willRunBlock(file: file!, method: "", line: 0, message: "", blockType: .none, indentationLevel: 0)
         print("✏️ \(description)")
         closure?()
         _running = false

@@ -1,7 +1,9 @@
 /**
  Responsible for the executions of the tests.
  */
-struct Observe {
+public struct Observe {
+    
+    static var reporterDelegate: ReporterDelegate?
     
     static var currentTest: ObserveTestable?
     

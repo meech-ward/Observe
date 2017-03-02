@@ -21,6 +21,10 @@ private func addTestBlock(_ message: String, file: StaticString = #file, line: U
     let test = ObserveTest()
     test.closure = handler
     test.description = message
+    test.file = file 
+    test.line = line
+    
+    test.reporterDelegate = Observe.reporterDelegate
     
     if var currentTest = Observe.currentTest {
         currentTest.addChild(test: test)

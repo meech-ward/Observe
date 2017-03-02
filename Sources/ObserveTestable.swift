@@ -23,6 +23,8 @@ protocol ObserveTestable {
     var description: String? { get set }
     /// The parent of the current test.
     var parent: ObserveTestable? { get }
+    /// The reporter.
+    var reporterDelegate: ReporterDelegate? { get set }
     
     /**
      Add a child test to this test's children array.
