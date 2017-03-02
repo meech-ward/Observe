@@ -1,10 +1,7 @@
+/**
+ Responsible for the executions of the tests.
+ */
 struct Observe {
-
-//    var text = "Hello, World!"
-//    
-//    static var failureHandler: ((_ message: String, _ file: StaticString, _ line: UInt) -> (Void))?
-//    static var successHandler: ((_ message: String, _ file: StaticString, _ line: UInt) -> (Void))?
-//    
     
     static var currentTest: ObserveTestable?
     
@@ -27,7 +24,6 @@ struct Observe {
         
         self.currentTest = nextTestInLine()
         
-        
         runTests()
     }
     
@@ -49,53 +45,3 @@ struct Observe {
         return test
     }
 }
-
-/**
- */
-public func describe(_ message: String, file: StaticString = #file, line: UInt = #line, handler: @escaping ((Void) -> (Void))) {
-    let test = ObserveTest()
-    test.closure = handler
-    test.description = message
-    
-    if var currentTest = Observe.currentTest {
-        currentTest.addChild(test: test)
-    } else {
-        Observe.currentTest = test
-    }
-//    print("✏️ \(message)")
-    Observe.runTests()
-}
-
-public func context(_ message: String, file: StaticString = #file, line: UInt = #line, handler: @escaping ((Void) -> (Void))) {
-    describe(message, file: file, line: line, handler: handler)
-}
-
-public func it(_ message: String, file: StaticString = #file, line: UInt = #line, handler: @escaping ((Void) -> (Void))) {
-    describe(message, file: file, line: line, handler: handler)
-}
-
-public func given(_ message: String, file: StaticString = #file, line: UInt = #line, handler: @escaping ((Void) -> (Void))) {
-    describe(message, file: file, line: line, handler: handler)
-}
-
-public func when(_ message: String, file: StaticString = #file, line: UInt = #line, handler: @escaping ((Void) -> (Void))) {
-    describe(message, file: file, line: line, handler: handler)
-}
-
-public func then(_ message: String, file: StaticString = #file, line: UInt = #line, handler: @escaping ((Void) -> (Void))) {
-    describe(message, file: file, line: line, handler: handler)
-}
-
-
-/**
- Called before each of the blocks within the same scope.
- */
-public func beforeEach(file: StaticString = #file, line: UInt = #line, handler: @escaping ((Void) -> (Void))) {
-    guard var currentTest = Observe.currentTest else {
-        print("🖕🏼Error: beforeEach must go inside a function")
-        return
-    }
-    
-    currentTest.beforeEachChild = handler
-}
-
