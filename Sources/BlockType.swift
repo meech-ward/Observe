@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum BlockType {
+public enum BlockType {
     case none
     case other
     case describe

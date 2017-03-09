@@ -5,8 +5,9 @@
 //  Created by Sam Meech-Ward on 2017-03-01.
 //
 //
-@testable import Observe
+import Observe
 import XCTest
+
 
 class TestReporter: ReporterDelegate {
     

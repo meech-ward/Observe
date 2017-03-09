@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol ReporterDelegate {
+public protocol ReporterDelegate {
     
     func willRunBlock(file: StaticString, method: String, line: UInt, message: String, blockType: BlockType, indentationLevel: Int)
     
