@@ -19,12 +19,12 @@ protocol ObserveTestable {
     var running: Bool { get }
     /// true if this test has already been run, false otherwise.
     var tested: Bool { get }
-    /// The description of the test.
-    var description: String? { get set }
+    /// The message of the test.
+    var message: String? { get set }
     /// The parent of the current test.
     var parent: ObserveTestable? { get }
     /// The reporter.
-    var reporterDelegate: ReporterDelegate? { get set }
+    var reporterDelegate: ReporterDelegate? { get }
     
     /**
      Add a child test to this test's children array.

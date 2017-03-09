@@ -16,15 +16,17 @@ import Foundation
  - parameter message: The line number in that file that the function is called from.
  - parameter message: The logic that will get exectued.
  */
-private func addTestBlock(_ message: String, file: StaticString = #file, line: UInt = #line, handler: @escaping ((Void) -> (Void))) {
+private func addTestBlock(_ message: String, blockType: BlockType, file: StaticString = #file, line: UInt = #line, method: String = #function, handler: @escaping ((Void) -> (Void))) {
     
     let test = ObserveTest()
     test.closure = handler
-    test.description = message
-    test.file = file 
+    test.message = message
+
+    test.blockType = blockType
+
+    test.file = file
     test.line = line
-    
-    test.reporterDelegate = Observe.reporterDelegate
+    test.method = method
     
     if var currentTest = Observe.currentTest {
         currentTest.addChild(test: test)
@@ -35,28 +37,32 @@ private func addTestBlock(_ message: String, file: StaticString = #file, line: U
     Observe.runTests()
 }
 
-public func describe(_ message: String, file: StaticString = #file, line: UInt = #line, handler: @escaping ((Void) -> (Void))) {
-    addTestBlock(message, file: file, line: line, handler: handler)
+public func describe(_ message: String, file: StaticString = #file, line: UInt = #line, method: String = #function, handler: @escaping ((Void) -> (Void))) {
+    addTestBlock(message, blockType: .describe, file: file, line: line, method: method, handler: handler)
 }
 
-public func context(_ message: String, file: StaticString = #file, line: UInt = #line, handler: @escaping ((Void) -> (Void))) {
-    addTestBlock(message, file: file, line: line, handler: handler)
+public func context(_ message: String, file: StaticString = #file, line: UInt = #line, method: String = #function, handler: @escaping ((Void) -> (Void))) {
+    addTestBlock(message, blockType: .context, file: file, line: line, method: method, handler: handler)
 }
 
-public func it(_ message: String, file: StaticString = #file, line: UInt = #line, handler: @escaping ((Void) -> (Void))) {
-    addTestBlock(message, file: file, line: line, handler: handler)
+public func it(_ message: String, file: StaticString = #file, line: UInt = #line, method: String = #function, handler: @escaping ((Void) -> (Void))) {
+    addTestBlock(message, blockType: .it, file: file, line: line, method: method, handler: handler)
 }
 
-public func given(_ message: String, file: StaticString = #file, line: UInt = #line, handler: @escaping ((Void) -> (Void))) {
-    addTestBlock(message, file: file, line: line, handler: handler)
+public func given(_ message: String, file: StaticString = #file, line: UInt = #line, method: String = #function, handler: @escaping ((Void) -> (Void))) {
+    addTestBlock(message, blockType: .given, file: file, line: line, method: method, handler: handler)
 }
 
-public func when(_ message: String, file: StaticString = #file, line: UInt = #line, handler: @escaping ((Void) -> (Void))) {
-    addTestBlock(message, file: file, line: line, handler: handler)
+public func when(_ message: String, file: StaticString = #file, line: UInt = #line, method: String = #function, handler: @escaping ((Void) -> (Void))) {
+    addTestBlock(message, blockType: .when, file: file, line: line, method: method, handler: handler)
 }
 
-public func then(_ message: String, file: StaticString = #file, line: UInt = #line, handler: @escaping ((Void) -> (Void))) {
-    addTestBlock(message, file: file, line: line, handler: handler)
+public func then(_ message: String, file: StaticString = #file, line: UInt = #line, method: String = #function, handler: @escaping ((Void) -> (Void))) {
+    addTestBlock(message, blockType: .then, file: file, line: line, method: method, handler: handler)
+}
+
+public func and(_ message: String, file: StaticString = #file, line: UInt = #line, method: String = #function, handler: @escaping ((Void) -> (Void))) {
+    addTestBlock(message, blockType: .and, file: file, line: line, method: method, handler: handler)
 }
 
 

@@ -11,8 +11,9 @@ import Foundation
 class ObserveTest: ObserveTestable {
     var closure: ((Void) -> (Void))?
     var beforeEachChild: ((Void) -> (Void))?
-    var description: String?
-    var reporterDelegate: ReporterDelegate?
+    var reporterDelegate: ReporterDelegate? {
+        return Observe.reporterDelegate
+    }
     var file: StaticString?
     var method: String?
     var line: UInt?
@@ -60,12 +61,23 @@ class ObserveTest: ObserveTestable {
         beforeEachChild?()
     }
     
+    private func numberOfParents() -> Int {
+        var number = 0
+        var parent = self.parent
+        while parent != nil {
+            number += 1
+            parent = parent?.parent
+        }
+        return number
+    }
+    
     func runTest() {
         _running = true
-        reporterDelegate?.willRunBlock(file: file!, method: "", line: 0, message: "", blockType: .none, indentationLevel: 0)
-        print("✏️ \(description)")
+        let numberOfParents = self.numberOfParents()
+        reporterDelegate?.willRunBlock(file: file ?? "", method: method ?? "", line: line ?? 0, message: message ?? "", blockType: blockType ?? .none, indentationLevel: numberOfParents)
         closure?()
         _running = false
         _tested = true
+        reporterDelegate?.didRunBlock(file: file ?? "", method: method ?? "", line: line ?? 0, message: message ?? "", blockType: blockType ?? .none, indentationLevel: numberOfParents)
     }
 }
