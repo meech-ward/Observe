@@ -12,24 +12,18 @@ import Foundation
  Responsible for creating the new test type and adding it to the tree structure.
  
  - parameter message: The message passed into the function.
- - parameter message: The file the function is called from.
- - parameter message: The line number in that file that the function is called from.
- - parameter message: The logic that will get exectued.
+ - parameter blockType: The type of function that was called `BlockType`.
+ - parameter file: The file the function is called from.
+ - parameter line: The line number in that file that the function is called from.
+ - parameter method: The method in that file that the function is called from.
+ - parameter handler: The logic that will get exectued.
  */
 private func addTestBlock(_ message: String, blockType: BlockType, file: StaticString = #file, line: UInt = #line, method: String = #function, handler: @escaping ((Void) -> (Void))) {
     
-    let test = ObserveTest()
-    test.closure = handler
-    test.message = message
-
-    test.blockType = blockType
-
-    test.file = file
-    test.line = line
-    test.method = method
+    let test = ObserveTest(closure: handler, file: file, method: method, line: line, message: message, blockType: blockType)
     
     if var currentTest = Observe.currentTest {
-        currentTest.addChild(test: test)
+        currentTest.add(childTest: test)
     } else {
         Observe.currentTest = test
     }
@@ -75,5 +69,5 @@ public func beforeEach(file: StaticString = #file, line: UInt = #line, handler: 
         return
     }
     
-    currentTest.beforeEachChild = handler
+    currentTest.add(beforeEachChild: handler)
 }

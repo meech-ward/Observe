@@ -26,9 +26,9 @@ class WhenRunningTestsFromATestObject: XCTestCase {
 
     func test_runTest_runsTheTestClosure() {
         var run = false
-        observeTest.closure = {
+        observeTest = ObserveTest(closure: {
             run = true
-        }
+        })
         
         observeTest.runTest()
     
@@ -36,9 +36,9 @@ class WhenRunningTestsFromATestObject: XCTestCase {
     }
     
     func test_runTest_updatesRunningProperties() {
-        observeTest.closure = {
+        observeTest = ObserveTest(closure: {
             XCTAssertTrue(self.observeTest.running)
-        }
+        })
         
         XCTAssertFalse(observeTest.running)
         observeTest.runTest()
