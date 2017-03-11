@@ -1,9 +1,9 @@
 /**
  Responsible for the executions of the tests.
  */
-public struct Observe {
+struct Observe {
     
-    public static var reporter: Reportable?
+    static var reporter: Reportable?
     
     static var currentTest: ObserveTestable?
     
@@ -46,4 +46,8 @@ public struct Observe {
         
         return test
     }
+}
+
+public func set(reporter: Reportable) {
+    Observe.reporter = reporter
 }

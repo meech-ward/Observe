@@ -47,7 +47,7 @@ class WhenLoggingOutput: XCTestCase {
         super.setUp()
         
         self.reporter = TestReporter()
-        Observe.reporter = reporter!
+        set(reporter: reporter!)
     }
     
     override func tearDown() {
@@ -110,7 +110,7 @@ class WhenLoggingOutput: XCTestCase {
         let string = "some text"
         describe(string) {
             self.reporter = TestReporter()
-            Observe.reporter = self.reporter!
+            Observe.set(reporter: self.reporter!)
         }
         
         assertTestReporterPropertiesAreSet(reporter: self.reporter)
