@@ -51,7 +51,3 @@ protocol ObserveTestable {
     
 
 }
-
-extension ObserveTestable {
-    
-}
