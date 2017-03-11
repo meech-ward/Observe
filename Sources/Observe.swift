@@ -3,7 +3,7 @@
  */
 public struct Observe {
     
-    public static var reporterDelegate: ReporterDelegate?
+    public static var reporter: Reportable?
     
     static var currentTest: ObserveTestable?
     

@@ -11,8 +11,8 @@ import Foundation
 class ObserveTest: ObserveTestable {
     var closure: ((Void) -> (Void))?
     var beforeEachChild: ((Void) -> (Void))?
-    var reporterDelegate: ReporterDelegate? {
-        return Observe.reporterDelegate
+    var Reportable: Reportable? {
+        return Observe.reporter
     }
     var file: StaticString?
     var method: String?
@@ -74,10 +74,10 @@ class ObserveTest: ObserveTestable {
     func runTest() {
         _running = true
         let numberOfParents = self.numberOfParents()
-        reporterDelegate?.willRunBlock(file: file ?? "", method: method ?? "", line: line ?? 0, message: message ?? "", blockType: blockType ?? .none, indentationLevel: numberOfParents)
+        Reportable?.willRunBlock(file: file ?? "", method: method ?? "", line: line ?? 0, message: message ?? "", blockType: blockType ?? .none, indentationLevel: numberOfParents)
         closure?()
         _running = false
         _tested = true
-        reporterDelegate?.didRunBlock(file: file ?? "", method: method ?? "", line: line ?? 0, message: message ?? "", blockType: blockType ?? .none, indentationLevel: numberOfParents)
+        Reportable?.didRunBlock(file: file ?? "", method: method ?? "", line: line ?? 0, message: message ?? "", blockType: blockType ?? .none, indentationLevel: numberOfParents)
     }
 }

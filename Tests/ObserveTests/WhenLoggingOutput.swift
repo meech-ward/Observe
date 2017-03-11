@@ -9,7 +9,7 @@ import Observe
 import XCTest
 
 
-class TestReporter: ReporterDelegate {
+class TestReporter: Reportable {
     
     var file: String?
     var method: String?
@@ -47,7 +47,7 @@ class WhenLoggingOutput: XCTestCase {
         super.setUp()
         
         self.reporter = TestReporter()
-        Observe.reporterDelegate = reporter!
+        Observe.reporter = reporter!
     }
     
     override func tearDown() {
@@ -110,7 +110,7 @@ class WhenLoggingOutput: XCTestCase {
         let string = "some text"
         describe(string) {
             self.reporter = TestReporter()
-            Observe.reporterDelegate = self.reporter!
+            Observe.reporter = self.reporter!
         }
         
         assertTestReporterPropertiesAreSet(reporter: self.reporter)

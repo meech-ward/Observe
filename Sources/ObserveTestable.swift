@@ -24,7 +24,7 @@ protocol ObserveTestable {
     /// The parent of the current test.
     var parent: ObserveTestable? { get }
     /// The reporter.
-    var reporterDelegate: ReporterDelegate? { get }
+    var Reportable: Reportable? { get }
     
     /**
      Add a child test to this test's children array.
