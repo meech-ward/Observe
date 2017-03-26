@@ -3,7 +3,7 @@
  */
 struct Observe {
     
-    static var reporter: Reportable?
+    public static var reporter: Reportable? = DefaultReporter.sharedReporter
     
     static var currentTest: ObserveTestable?
     
