@@ -6,8 +6,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 ### Added
-- A custom reporter so you can customize the test output.
+
+### Changed
+
+
+## [0.3.0] - 2017-03-27
+### Added
 - Given, When, Then test blocks.
+- A custom reporter so you can customize the test output.
 
 ### Changed
 
