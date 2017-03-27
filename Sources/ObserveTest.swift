@@ -9,31 +9,54 @@
 import Foundation
 
 class ObserveTest: ObserveTestable {
-    var closure: ((Void) -> (Void))?
-    var beforeEachChild: ((Void) -> (Void))?
-    var description: String?
+    private let closure: ((Void) -> (Void))?
+    private let file: StaticString?
+    private let method: String?
+    private let line: UInt?
+    private let message: String?
+    private let blockType: BlockType?
     
-    var children: [ObserveTestable]? {
-        return _children
+    init(closure: ((Void) -> (Void))? = nil, file: StaticString? = nil, method: String? = nil, line: UInt? = nil, message: String? = nil, blockType: BlockType? = nil) {
+        self.closure = closure
+        self.file = file
+        self.method = method
+        self.line = line
+        self.message = message
+        self.blockType = blockType
     }
-    private var _children: [ObserveTestable]?
     
-    var running: Bool {
-        return _running
+    private var reporter: Reportable? {
+        return Observe.reporter
     }
-    private var _running = false
     
-    var tested: Bool {
-        return _tested
-    }
-    private var _tested = false
+    // MARK: Parent
+    
+    private var _parent: ObserveTestable?
     
     var parent: ObserveTestable? {
         return _parent
     }
-    private var _parent: ObserveTestable?
     
-    func addChild(test: ObserveTestable) {
+    private var numberOfParents: Int {
+        var number = 0
+        var parent = self.parent
+        while parent != nil {
+            number += 1
+            parent = parent?.parent
+        }
+        return number
+    }
+    
+    // MARK: Children
+    
+    private var _children: [ObserveTestable]?
+    
+    var children: [ObserveTestable]? {
+        return _children
+    }
+    
+    
+    func add(childTest test: ObserveTestable) {
         if _children == nil {
             _children = []
         }
@@ -49,15 +72,36 @@ class ObserveTest: ObserveTestable {
         return _children?.remove(at: 0)
     }
     
+    // MARK: Before & After
+    
+    private var beforeEachChild: ((Void) -> (Void))?
+    
+    func add(beforeEachChild child: ((Void) -> (Void))?) {
+        beforeEachChild = child
+    }
+    
+    // MARK: Run 
+    
+    private var _running = false
+    private var _tested = false
+    
+    var running: Bool {
+        return _running
+    }
+    var tested: Bool {
+        return _tested
+    }
+    
     func runBeforeEachChild() {
         beforeEachChild?()
     }
     
     func runTest() {
         _running = true
-        print("✏️ \(description)")
+        reporter?.willRunBlock(file: file ?? "", method: method ?? "", line: line ?? 0, message: message ?? "", blockType: blockType ?? .none, indentationLevel: numberOfParents)
         closure?()
         _running = false
         _tested = true
+        reporter?.didRunBlock(file: file ?? "", method: method ?? "", line: line ?? 0, message: message ?? "", blockType: blockType ?? .none, indentationLevel: numberOfParents)
     }
 }

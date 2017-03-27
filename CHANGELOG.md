@@ -10,6 +10,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Changed
 
 
+## [0.3.0] - 2017-03-27
+### Added
+- Given, When, Then test blocks.
+- A custom reporter so you can customize the test output.
+
+### Changed
+
+
 ## [0.2.0] - 2017-01-14
 ### Added
 - The following sections to README:

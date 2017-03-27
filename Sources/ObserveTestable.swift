@@ -9,28 +9,15 @@
 import Foundation
 
 protocol ObserveTestable {
-    /// The closure that should be run for the current test.
-    var closure: ((Void) -> (Void))? { get set }
-    /// The closure that should be run before any child closures get run.
-    var beforeEachChild: ((Void) -> (Void))? { get set }
     /// All the direct children of this test.
     var children: [ObserveTestable]? { get }
     /// true if this test is running, false otherwise.
     var running: Bool { get }
     /// true if this test has already been run, false otherwise.
     var tested: Bool { get }
-    /// The description of the test.
-    var description: String? { get set }
     /// The parent of the current test.
     var parent: ObserveTestable? { get }
-    
-    /**
-     Add a child test to this test's children array.
-     This will also add the current test as the child's parent.
-     
-     - parameter test: The child test.
-     */
-    mutating func addChild(test: ObserveTestable)
+
     
     /**
      Run the current test and adjust the running variable to show the status of this.
@@ -42,12 +29,25 @@ protocol ObserveTestable {
     */
     func runBeforeEachChild()
     
+    // MARK: Mutating
+    
+    /**
+     Add a child test to this test's children array.
+     This will also add the current test as the child's parent.
+     
+     - parameter test: The child test.
+     */
+    mutating func add(childTest test: ObserveTestable)
+    
     /**
      Get the next child test from the list of next children and pop that child from the list.
-    */
+     */
     mutating func popNextChild() -> ObserveTestable?
-}
-
-extension ObserveTestable {
     
+    /**
+     Set the closure that will be run before each of the test's children
+    */
+    mutating func add(beforeEachChild child: ((Void) -> (Void))?)
+    
+
 }
