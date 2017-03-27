@@ -30,9 +30,9 @@ class WhenRunningBeforeAndAfterChildrenBlockFromATestObject: XCTestCase {
     
     func test_runBeforeEachChild_runsTheClosure() {
         var run = false
-        observeTest.beforeEachChild = {
+        observeTest.add(beforeEachChild: {
             run = true
-        }
+        })
         
         observeTest.runBeforeEachChild()
         

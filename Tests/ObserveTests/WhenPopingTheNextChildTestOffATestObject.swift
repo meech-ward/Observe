@@ -23,9 +23,9 @@ class WhenPopingTheNextChildTestOffATestObject: XCTestCase {
         childTest1 = ObserveTest()
         childTest2 = ObserveTest()
         childTest3 = ObserveTest()
-        observeTest.addChild(test: childTest1)
-        observeTest.addChild(test: childTest2)
-        observeTest.addChild(test: childTest3)
+        observeTest.add(childTest: childTest1)
+        observeTest.add(childTest: childTest2)
+        observeTest.add(childTest: childTest3)
         
         children = [childTest1, childTest2, childTest3]
     }

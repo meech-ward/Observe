@@ -25,7 +25,7 @@ class WhenAddingAChildToATestObject: XCTestCase {
 
     func test_addChild_addsATestAsAChild() {
         let childTest = ObserveTest()
-        observeTest.addChild(test: childTest)
+        observeTest.add(childTest: childTest)
         
         XCTAssert(observeTest.children?.isEmpty == false)
         
@@ -40,8 +40,8 @@ class WhenAddingAChildToATestObject: XCTestCase {
     func test_addChild_addsAManyTestsAsAChildrenInorder() {
         let childTest1 = ObserveTest()
         let childTest2 = ObserveTest()
-        observeTest.addChild(test: childTest1)
-        observeTest.addChild(test: childTest2)
+        observeTest.add(childTest: childTest1)
+        observeTest.add(childTest: childTest2)
         
         XCTAssert(observeTest.children?.isEmpty == false)
         
@@ -62,7 +62,7 @@ class WhenAddingAChildToATestObject: XCTestCase {
     
     func test_addChild_addsParentToChild() {
         let childTest = ObserveTest()
-        observeTest.addChild(test: childTest)
+        observeTest.add(childTest: childTest)
         
         guard let parent = childTest.parent as? ObserveTest else {
             XCTFail("parent not added to child test")

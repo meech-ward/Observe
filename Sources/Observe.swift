@@ -3,6 +3,8 @@
  */
 struct Observe {
     
+    static var reporter: Reportable? = DefaultReporter.sharedReporter
+    
     static var currentTest: ObserveTestable?
     
     static func runTests() {
@@ -44,4 +46,12 @@ struct Observe {
         
         return test
     }
+}
+
+public func set(reporter: Reportable) {
+    Observe.reporter = reporter
+}
+
+public func defaultReporter() -> DefaultReporter {
+    return DefaultReporter.sharedReporter
 }
