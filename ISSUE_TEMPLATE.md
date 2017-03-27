@@ -39,7 +39,7 @@ Give us an idea of what this new idea will look like in code. The more code snip
 
 ## Impact
 
-Describe the impact that this change will have on existing code. Will some Vapor applications stop compiling due to this change? Will applications still compile but produce different behavior than they used to?
+Describe the impact that this change will have on existing code. Will some applications stop compiling due to this change? Will applications still compile but produce different behavior than they used to?
 
 ## Alternatives considered
 
