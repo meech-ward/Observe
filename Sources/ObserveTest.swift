@@ -9,14 +9,14 @@
 import Foundation
 
 class ObserveTest: ObserveTestable {
-    private let closure: ((Void) -> (Void))?
+    private let closure: (() -> (Void))?
     private let file: StaticString?
     private let method: String?
     private let line: UInt?
     private let message: String?
     private let blockType: BlockType?
     
-    init(closure: ((Void) -> (Void))? = nil, file: StaticString? = nil, method: String? = nil, line: UInt? = nil, message: String? = nil, blockType: BlockType? = nil) {
+    init(closure: (() -> (Void))? = nil, file: StaticString? = nil, method: String? = nil, line: UInt? = nil, message: String? = nil, blockType: BlockType? = nil) {
         self.closure = closure
         self.file = file
         self.method = method
@@ -74,9 +74,9 @@ class ObserveTest: ObserveTestable {
     
     // MARK: Before & After
     
-    private var beforeEachChild: ((Void) -> (Void))?
+    private var beforeEachChild: (() -> (Void))?
     
-    func add(beforeEachChild child: ((Void) -> (Void))?) {
+    func add(beforeEachChild child: (() -> (Void))?) {
         beforeEachChild = child
     }
     
