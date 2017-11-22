@@ -47,7 +47,7 @@ protocol ObserveTestable {
     /**
      Set the closure that will be run before each of the test's children
     */
-    mutating func add(beforeEachChild child: ((Void) -> (Void))?)
+    mutating func add(beforeEachChild child: (() -> (Void))?)
     
 
 }
