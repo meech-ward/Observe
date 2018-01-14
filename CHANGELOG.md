@@ -9,6 +9,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Changed
 
+## [0.4.0] - 2017-11-21
+### Added
+
+### Changed
+- Updated to Swift 4
+
 
 ## [0.3.0] - 2017-03-27
 ### Added

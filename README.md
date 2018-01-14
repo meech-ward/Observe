@@ -6,7 +6,7 @@ Observe and [Focus](https://github.com/ObserveSocial/Focus) are *not* coupled to
 
 ## Requirements
 
- * Swift 3.0+
+ * Swift 4.0+
 
 ## How To Use
 `
@@ -15,14 +15,9 @@ Observe and [Focus](https://github.com/ObserveSocial/Focus) are *not* coupled to
 Open your `Package.Swift` file and add the following dependency:
 
 ```swift
-import PackageDescription
-
-let package = Package(
-    name: "Hello",
-    dependencies: [
-        .Package(url: "https://github.com/ObserveSocial/Observe.git", majorVersion: 0)
-    ]
-)
+dependencies: [
+    .package(url: "https://github.com/ObserveSocial/Observe.git", from: "0.4.0")
+]
 ```
 
 Run `swift build` in terminal to fetch this new dependency.
