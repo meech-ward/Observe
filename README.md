@@ -1,6 +1,6 @@
 # Observe
 
-Observe is a BDD / TDD test framework for Swift 3 that pairs very nicely with the [Focus](https://github.com/ObserveSocial/Focus) assertion framework.
+Observe is a BDD / TDD test framework for Swift 4 that pairs very nicely with the [Focus](https://github.com/ObserveSocial/Focus) assertion framework.
 
 Observe and [Focus](https://github.com/ObserveSocial/Focus) are *not* coupled to any other frameworks so you can include this package in your tests or your main app code.
 
@@ -9,7 +9,7 @@ Observe and [Focus](https://github.com/ObserveSocial/Focus) are *not* coupled to
  * Swift 4.0+
 
 ## How To Use
-`
+
 ### Installing
 
 Open your `Package.Swift` file and add the following dependency:
