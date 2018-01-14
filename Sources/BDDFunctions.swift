@@ -61,7 +61,7 @@ public func and(_ message: String, file: StaticString = #file, line: UInt = #lin
 
 
 /**
- Called before each of the blocks within the same scope.
+ Called before each of the blocks within the same scope and the nested scope.
  */
 public func beforeEach(file: StaticString = #file, line: UInt = #line, handler: @escaping (() -> (Void))) {
     guard var currentTest = Observe.currentTest else {
