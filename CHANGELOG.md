@@ -9,6 +9,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Changed
 
+## [0.5.0] - 2018-01-14
+### Added
+
+### Changed
+- Make sure before each gets called before **Every** block
+
 ## [0.4.0] - 2017-11-21
 ### Added
 
