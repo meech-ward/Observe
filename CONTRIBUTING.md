@@ -4,8 +4,6 @@
 
 Make sure you've read the README file in this repo.
 
-Observe uses protocol oriented programming so always start with a protocol then create classes, structs, and enums after.
-
 ## How Can I Contribute?
 
 ### Reporting Bugs
