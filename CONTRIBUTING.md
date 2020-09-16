@@ -46,7 +46,7 @@ Once you have completed you're code. Pull request your code into the `develop` b
 
 ### Git Styleguide
 
-Use [the seven rules of a great git commit message] (http://chris.beams.io/posts/git-commit/) when committing.
+Use [the seven rules of a great git commit message](http://chris.beams.io/posts/git-commit/) when committing.
 
 ### Swift Styleguide
 
